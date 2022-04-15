@@ -2,6 +2,7 @@
 
 Automatically updates the repo's star and update time in markdown documents
 
+## Usage
 
 ```shell
 
@@ -10,5 +11,7 @@ Automatically updates the repo's star and update time in markdown documents
 node main ../awesome-vue  
 
 ```
+
+## Examples
 
 [awesome-vue with stars](https://github.com/romejiang/awesome-vue/blob/master/awesome-vue-with-stars.md)
