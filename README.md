@@ -5,7 +5,10 @@ Automatically updates the repo's star and update time in markdown documents
 
 ```shell
 
-node main ../awesome-vue  // Generate a file awesome-vue-with-stars.md in the awesome-vue folder
+// Generate a file awesome-vue-with-stars.md in the awesome-vue folder
 
+node main ../awesome-vue  
 
 ```
+
+[awesome-vue with stars](https://github.com/romejiang/awesome-vue/blob/master/awesome-vue-with-stars.md)
