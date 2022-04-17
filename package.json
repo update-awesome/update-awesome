@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "cli-progress": "^3.10.0",
-    "markdown-it": "^12.3.2",
+    "dotenv": "^16.0.0",
     "sleep": "^6.3.0"
   }
 }
