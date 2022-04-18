@@ -14,4 +14,6 @@ node main ../awesome-vue
 
 ## Examples
 
-[awesome-vue with stars](https://github.com/romejiang/awesome-vue/blob/master/awesome-vue-with-stars.md)
+[awesome-nodejs with stars](https://github.com/update-awesome/awesome-nodejs)
+[awesome-vue with stars](https://github.com/update-awesome/awesome-vue)
+[awesome-python with stars](https://github.com/update-awesome/awesome-python)
