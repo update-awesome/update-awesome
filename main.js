@@ -9,6 +9,8 @@ const README_FILENAME = '/README.md'
 const TARGET_FILENAME = '/awesome-with-stars.md'
 const DEBUG = false
 // const DEBUG = true
+// const isProgress = false
+const isProgress = true
 let DATEBASE_NAME = 'db'
 
 const getStar = async (repo) => {
@@ -26,7 +28,7 @@ const getStar = async (repo) => {
     return 0
   } else {
     sleep.msleep(800)
-    DEBUG && console.log('get star: ' + repo)
+    DEBUG && console.log('get star: ' + repo + '...')
     const response = await axios.get('https://api.github.com/repos/' + repo, {
       auth: {
         username: process.env.GITHUB_USERNAME,
@@ -90,17 +92,19 @@ const proc = async (text) => {
   DEBUG && console.log('total: ' + total)
 
   const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic)
-  progressBar.start(total, 0)
+  isProgress && progressBar.start(total, 0)
 
   const texts = []
   const indexs = []
   while ((itme = reg.exec(text))) {
     const link = itme[1]
 
-    progressBar.update(progres++)
+    isProgress && progressBar.update(progres++)
     if (link.startsWith('https://github.com')) {
       const repo = link.split('/')[3] + '/' + link.split('/')[4]
-
+      if (!link.split('/')[4]) {
+        continue
+      }
       try {
         const star = await getStar(repo)
         if (star > 0) {
@@ -111,7 +115,6 @@ const proc = async (text) => {
           texts.push(text)
           indexs.push(itme.index)
         }
-        // console.log(repo, star)
       } catch (e) {
         DEBUG && console.log(e)
         console.log('error: ' + repo)
@@ -124,7 +127,7 @@ const proc = async (text) => {
     const text = texts[index]
     nText = nText.slice(0, idx) + text + nText.slice(idx)
   }
-  progressBar.stop()
+  isProgress && progressBar.stop()
   return nText
 }
 
@@ -139,5 +142,5 @@ const proc = async (text) => {
 
   const content = await proc(data)
 
-  fs.writeFileSync(arguments[0] + TARGET_FILENAME, content)
+  !DEBUG && fs.writeFileSync(arguments[0] + TARGET_FILENAME, content)
 })()
