@@ -25,7 +25,7 @@ const getStar = async (repo) => {
   } else if (repo.split('/').length != 2) {
     return 0
   } else {
-    sleep.msleep(700)
+    sleep.msleep(800)
     DEBUG && console.log('get star: ' + repo)
     const response = await axios.get('https://api.github.com/repos/' + repo, {
       auth: {
